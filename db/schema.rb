@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_235434) do
+ActiveRecord::Schema.define(version: 2020_10_28_010634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_235434) do
 
   create_table "cohemps", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "adress"
+    t.string "address"
     t.boolean "availability"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
