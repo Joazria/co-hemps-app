@@ -1,17 +1,18 @@
 class BookingsController < ApplicationController
-      before_action :set_booking, only: [:show, :edit, :update]
+  before_action :set_booking, only: [:show, :edit, :update]
 
   def show
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.user = current_user
+    @booking.user_id = current_user.id
+    @booking.cohemp_id = params[:cohemp_id]
 
     if @booking.save
       redirect_to profile_path, notice: 'A new Booking was successfully created.'
     else
-      render :new
+      render 'cohemps/show'
     end
   end
 
@@ -25,20 +26,19 @@ class BookingsController < ApplicationController
   def update
     if @booking.update(booking_params)
       redirect_to profile_path, notice: 'Your Booking was successfully updated.'
-     else
+    else
     #  render :edit
     end
   end
 
+  private
 
- private
     # Use callbacks to share common setup or constraints between actions.
-    def set_booking
-      @booking = Booking.find(params[:id])
-    end
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 
   def booking_params
-      params.require(:booking).permit(:date, :status, :cohemp_id)
-    end
-
+    params.require(:booking).permit(:date, :status)
+  end
 end
