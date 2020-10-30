@@ -1,2 +1,11 @@
 <h1>Cohemps#show</h1>
 <p>Find me in app/views/cohemps/show.html.erb</p>
+<p><%= @cohemp.description %></p>
+<p><%= @cohemp.address %></p>
+<% if @cohemp.availability %>
+ <p>Available</p>
+<% else %>
+ <p>Not Available</p>
+<% end %>
+<p><%= @cohemp.user.email %></p>
+

@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    #@cohemps = Cohemps.all
+    @cohemps = Cohemp.all
   end
 
   def profile
