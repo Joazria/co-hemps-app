@@ -8,9 +8,11 @@
  <p>Not Available</p>
 <% end %>
 <p>Owner: <%= @cohemp.user.email %></p>
-<p>Book this Co-Hemp:</p>
-<%= simple_form_for [@cohemp, @booking] do |f| %>
-  <%= f.input :date %>
-  <%= f.input :status %>
-  <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
+<% if @cohemp.id != current_user.id %>
+  <p>Book this Co-Hemp:</p>
+  <%= simple_form_for [@cohemp, @booking] do |f| %>
+    <%= f.input :date %>
+    <%= f.input :status %>
+    <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
+  <% end %>
 <% end %>
