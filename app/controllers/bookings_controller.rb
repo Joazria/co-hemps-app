@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
     @booking.cohemp_id = params[:cohemp_id]
+    @booking.status = "solicited"
 
     if @booking.save
       redirect_to profile_path, notice: 'A new Booking was successfully created.'
@@ -24,10 +25,11 @@ class BookingsController < ApplicationController
  # end
 
   def update
-    if @booking.update(booking_params)
+    @booking.status = "canceled"
+    if @booking.save
       redirect_to profile_path, notice: 'Your Booking was successfully updated.'
     else
-    #  render :edit
+      redirect_to profile_path, alert: 'Error.'
     end
   end
 
@@ -39,6 +41,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:date, :status)
+    params.require(:booking).permit(:status)
   end
 end

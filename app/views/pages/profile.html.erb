@@ -13,7 +13,11 @@
 <ul class="list-group">
     <% @bookings.each do |booking| %>
       <li class="list-group-item d-flex justify-content-between align-items-center">
-        <%= booking.date%>
-        <%= booking.cohemp.description %>
+        <%= booking.date%> |
+        <%= booking.cohemp.description %> |
+        <%= booking.status%>
+        <%= link_to 'Cancel this booking', booking_path(booking.id), method: :patch %>
+
+
       </li>
     <% end %>

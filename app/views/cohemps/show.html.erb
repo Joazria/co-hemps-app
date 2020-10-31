@@ -11,6 +11,6 @@
 <p>Book this Co-Hemp:</p>
 <%= simple_form_for [@cohemp, @booking] do |f| %>
   <%= f.input :date %>
-  <%= f.input :status %>
+  <%= link_to 'Cancel this booking', booking_path %>
   <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
 <% end %>
