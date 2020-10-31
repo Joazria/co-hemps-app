@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update]
+  before_action :set_booking, only: [:show, :edit, :update, :approve]
 
   def show
   end
@@ -26,6 +26,15 @@ class BookingsController < ApplicationController
 
   def update
     @booking.status = "canceled"
+    if @booking.save
+      redirect_to profile_path, notice: 'Your Booking was successfully updated.'
+    else
+      redirect_to profile_path, alert: 'Error.'
+    end
+  end
+
+  def approve
+    @booking.status = "approved"
     if @booking.save
       redirect_to profile_path, notice: 'Your Booking was successfully updated.'
     else
