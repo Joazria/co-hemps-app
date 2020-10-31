@@ -1,19 +1,20 @@
 class CohempsController < ApplicationController
-    before_action :set_cohemp, only: [:show, :edit, :update, :destroy]
+  before_action :set_cohemp, only: [:show, :edit, :update, :destroy]
 
   def index
     @cohemps = Cohemp.all
-     @markers = @cohemps.geocoded.map do |flat|
+    @markers = @cohemps.geocoded.map do |flat|
       {
         lat: cohemp.latitude,
-        lng: cohemp.longitude
+        lng: cohemp.longitude,
       }
     end
   end
 
   def show
     @booking = Booking.new
-    @markers = [ { lat: @cohemp.latitude, lng: @cohemp.longitude} ]
+
+    @markers = [{ lat: @cohemp.latitude, lng: @cohemp.longitude }]
   end
 
   def new
@@ -26,9 +27,8 @@ class CohempsController < ApplicationController
   def create
     @cohemp = Cohemp.new(cohemp_params)
     @cohemp.user = current_user
-
     if @cohemp.save
-      redirect_to @cohemp, notice: 'A new Co-Hemp was successfully created.'
+      redirect_to @cohemp, notice: "A new Co-Hemp was successfully created."
     else
       render :new
     end
@@ -36,7 +36,7 @@ class CohempsController < ApplicationController
 
   def update
     if @cohemp.update(cohemp_params)
-      redirect_to @cohemp, notice: 'The Co-Hemp was successfully updated.'
+      redirect_to @cohemp, notice: "The Co-Hemp was successfully updated."
     else
       render :edit
     end
@@ -44,17 +44,18 @@ class CohempsController < ApplicationController
 
   def destroy
     @cohemp.destroy
-    redirect_to root_path, notice: 'The Co-Hemp was successfully destroyed.'
+    redirect_to root_path, notice: "The Co-Hemp was successfully destroyed."
   end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cohemp
-      @cohemp = Cohemp.find(params[:id])
 
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cohemp
+    @cohemp = Cohemp.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def cohemp_params
-      params.require(:cohemp).permit(:description, :address, :availability)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def cohemp_params
+    params.require(:cohemp).permit(:description, :address, :availability)
+  end
 end

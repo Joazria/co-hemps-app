@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
-  #def edit ---> na pagina do profile
+ #def edit ---> na pagina do profile
  # end
 
   def update
@@ -50,6 +50,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status)
+    params.require(:booking).permit(:status, :date)
   end
 end
