@@ -1,6 +1,6 @@
 <h1>Profile Page</h1>
 
-<p>  Hello <%= @user.email %>!  </p>
+<p>Hello <%= @user.email %>!</p>
 <p>Your Co-Hemps:</p>
 <ul class="list-group">
     <% @cohemps.each do |cohemp| %>
@@ -8,12 +8,26 @@
         <%= link_to cohemp.description, cohemp_path(cohemp) %>
       </li>
     <% end %>
-<p><%= link_to '+ Add Co-Hemp', new_cohemp_path %></p>
+</ul>
+
+<h2>Edit Your Cohemp</h2>
+<% if @cohemps.ids[0] != nil %>
+  <%= simple_form_for(@cohemps[0]) do |f| %>
+    <%= f.input :address %>
+    <%= f.input :description %>
+    Available? <%= f.check_box :availability %>
+    <%= f.submit "Edit Cohemp", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+
+<p><%= link_to "+ Add Co-Hemp", new_cohemp_path %></p>
+
 <p>Your Bookings:</p>
 <ul class="list-group">
     <% @bookings.each do |booking| %>
       <li class="list-group-item d-flex justify-content-between align-items-center">
-        <%= booking.date%>
+        <%= booking.date %>
         <%= booking.cohemp.description %>
       </li>
     <% end %>
+</ul>
