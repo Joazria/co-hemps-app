@@ -8,9 +8,18 @@
  <p>Not Available</p>
 <% end %>
 <p>Owner: <%= @cohemp.user.email %></p>
-<p>Book this Co-Hemp:</p>
-<%= simple_form_for [@cohemp, @booking] do |f| %>
-  <%= f.input :date %>
-  <%= link_to 'Cancel this booking', booking_path %>
-  <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
+<% if @cohemp.id != current_user.id %>
+  <p>Book this Co-Hemp:</p>
+  <%= simple_form_for [@cohemp, @booking] do |f| %>
+    <%= f.input :date %>
+    <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
+  <% end %>
 <% end %>
+
+
+
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
