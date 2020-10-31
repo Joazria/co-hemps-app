@@ -1,2 +1,9 @@
 <h1>Cohemps#new</h1>
 <p>Find me in app/views/cohemps/new.html.erb</p>
+<%= simple_form_for @cohemp do |f| %>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  Want to make it available immediately?  <%= f.check_box :availability %>
+  <p>(you can manage availability later in your profile page)</p>
+  <p><%= f.submit "Create Co-Hemp", class: "btn btn-primary" %></p>
+<% end %>

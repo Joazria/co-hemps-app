@@ -1,2 +1,16 @@
 <h1>Cohemps#show</h1>
-<p>Find me in app/views/cohemps/show.html.erb</p>
+
+<p><%= @cohemp.description %></p>
+<p>Address: <%= @cohemp.address %></p>
+<% if @cohemp.availability %>
+ <p>Available</p>
+<% else %>
+ <p>Not Available</p>
+<% end %>
+<p>Owner: <%= @cohemp.user.email %></p>
+<p>Book this Co-Hemp:</p>
+<%= simple_form_for [@cohemp, @booking] do |f| %>
+  <%= f.input :date %>
+  <%= f.input :status %>
+  <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
+<% end %>
