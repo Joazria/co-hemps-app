@@ -13,6 +13,7 @@ class CohempsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @markers = [ { lat: @cohemp.latitude, lng: @cohemp.longitude} ]
   end
 
   def new

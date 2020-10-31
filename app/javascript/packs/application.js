@@ -25,10 +25,13 @@ require("channels")
 import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-import { initMapbox } from '../plugins/init_mapbox';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initAutocomplete } from '../plugins/init_mapbox';
+import { initMapbox } from '../plugins/init_mapbox';
+
+
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
