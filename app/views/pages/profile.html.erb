@@ -12,20 +12,24 @@
 <p>Your Bookings:</p>
 <ul class="list-group">
     <% @bookings.each do |booking| %>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <%= booking.date%> |
-        <%= booking.cohemp.description %> |
-        <%= booking.status%>
-        <%= link_to 'Cancel this booking', booking_cancel_path(booking.id), method: :patch %>
-      </li>
+      <% if booking.status == 'solicited' || booking.status == 'approved'%>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= booking.date%> |
+          <%= booking.cohemp.description %> |
+          <%= booking.status%>
+          <%= link_to 'Cancel this booking', booking_cancel_path(booking.id), method: :patch %>
+        </li>
+      <% end %>
     <% end %>
 <p>Reservations to your Co-Hemps:</p>
 <ul class="list-group">
     <% @reservations.each do |reservation| %>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <%= reservation.date%> |
-        <%= reservation.cohemp.description %> |
-        <%= reservation.status%>
-        <%= link_to 'Accept this booking', booking_approve_path(reservation.id), method: :patch %>
-      </li>
+      <% if reservation.status == 'solicited' || reservation.status == 'approved'%>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= reservation.date%> |
+          <%= reservation.cohemp.description %> |
+          <%= reservation.status%>
+          <%= link_to 'Accept this booking', booking_approve_path(reservation.id), method: :patch %>
+        </li>
+      <% end %>
     <% end %>
