@@ -21,14 +21,20 @@ require("channels")
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
-
 // External imports
 import "bootstrap";
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initAutocomplete } from '../plugins/init_mapbox';
+import { initMapbox } from '../plugins/init_mapbox';
+
+
 
 document.addEventListener('turbolinks:load', () => {
+  initMapbox();
   // Call your functions here, e.g:
   // initSelect2();
 });

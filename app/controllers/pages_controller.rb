@@ -3,6 +3,13 @@ class PagesController < ApplicationController
 
   def home
     @cohemps = Cohemp.all
+    @markers = @cohemps.geocoded.map do |cohemp|  {
+      lat: cohemp.latitude,
+      lng: cohemp.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { cohemp: cohemp })
+    }
+    end
+
   end
 
   def profile

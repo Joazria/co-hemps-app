@@ -3,10 +3,17 @@ class CohempsController < ApplicationController
 
   def index
     @cohemps = Cohemp.all
+     @markers = @cohemps.geocoded.map do |flat|
+      {
+        lat: cohemp.latitude,
+        lng: cohemp.longitude
+      }
+    end
   end
 
   def show
     @booking = Booking.new
+    @markers = [ { lat: @cohemp.latitude, lng: @cohemp.longitude} ]
   end
 
   def new
