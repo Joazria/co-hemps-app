@@ -12,12 +12,9 @@
   <p>Book this Co-Hemp:</p>
   <%= simple_form_for [@cohemp, @booking] do |f| %>
     <%= f.input :date %>
-    <%= f.input :status %>
     <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
   <% end %>
 <% end %>
-
-
 
 <div id="map"
      style="width: 100%; height: 600px;"
