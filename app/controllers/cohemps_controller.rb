@@ -3,7 +3,8 @@ class CohempsController < ApplicationController
 
   def index
     @cohemps = Cohemp.all
-    @markers = @cohemps.geocoded.map do |flat|
+
+     @markers = @cohemps.geocoded.map do |cohemp|
       {
         lat: cohemp.latitude,
         lng: cohemp.longitude,
