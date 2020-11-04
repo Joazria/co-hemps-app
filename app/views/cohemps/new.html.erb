@@ -1,6 +1,7 @@
 <h1>Cohemps#new</h1>
 <p>Find me in app/views/cohemps/new.html.erb</p>
 <%= simple_form_for @cohemp do |f| %>
+  <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :address %>
   Want to make it available immediately?  <%= f.check_box :availability %>

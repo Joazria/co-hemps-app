@@ -1,5 +1,6 @@
 class Cohemp < ApplicationRecord
   belongs_to :user
+  validates :name, presence: true
   validates :address, presence: true
   validates :description, presence: true
   validates :availability, presence: true, :inclusion => { :in => [true, false] }

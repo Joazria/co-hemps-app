@@ -7,7 +7,7 @@ class CohempsController < ApplicationController
      @markers = @cohemps.geocoded.map do |cohemp|
       {
         lat: cohemp.latitude,
-        lng: cohemp.longitude,
+        lng: cohemp.longitude
       }
     end
   end
@@ -57,6 +57,6 @@ class CohempsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def cohemp_params
-    params.require(:cohemp).permit(:description, :address, :availability)
+    params.require(:cohemp).permit(:description, :address, :availability, :name)
   end
 end
