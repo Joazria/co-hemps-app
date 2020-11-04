@@ -13,6 +13,7 @@
 <h2>Edit Your Cohemp</h2>
 <% if @cohemps.ids[0] != nil %>
   <%= simple_form_for(@cohemps[0]) do |f| %>
+    <%= f.input :name %>
     <%= f.input :address %>
     <%= f.input :description %>
     Available? <%= f.check_box :availability %>
