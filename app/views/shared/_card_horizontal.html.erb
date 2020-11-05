@@ -13,10 +13,11 @@
       <li class="list-item">Da boa</li>
       <li class="list-item">Acompanha cerveja artesanal</li>
     </ul>
-    
-    <%= render partial: "shared/button", locals: {
-      variant: "btn-green mt-sm",
-      title: "Reservar",
-    } %>
+    <%= link_to cohemp_path(cohemp) do%>
+      <%= render partial: "shared/button", locals: {
+        variant: "btn-green mt-sm",
+        title: "Reservar",
+      } %>
+    <% end %>
   </div>
 </div>
