@@ -1,0 +1,22 @@
+<div class="card-horizontal mt-sm">
+  <img src="https://source.unsplash.com/285x220/?building" alt="" class="cloudinary">
+  <div class="card-horizontal__container">
+    <h2 class="title-2 mt-sm">
+      <% if cohemp.name.nil? %>
+        Cohemp em São Paulo
+      <% else  %>
+        <%= cohemp.name %>
+      <% end  %>
+    </h2>
+    <span class="separator separator--small"></span>
+    <ul class="feature-list mt-sm">
+      <li class="list-item">Da boa</li>
+      <li class="list-item">Acompanha cerveja artesanal</li>
+    </ul>
+    
+    <%= render partial: "shared/button", locals: {
+      variant: "btn-green mt-sm",
+      title: "Reservar",
+    } %>
+  </div>
+</div>

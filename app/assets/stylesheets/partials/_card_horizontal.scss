@@ -1,0 +1,52 @@
+.card-horizontal {
+  min-height: 190px;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1;
+  gap: 0 20px;
+  padding: 5px;
+  @media screen and (max-width: 560px) {
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+  }
+  img {
+    height: 100%;
+    width: clamp(280px, 100%, 320px);
+    border-radius: $medium-radius;
+    object-fit: cover;
+  }
+  &__container {
+    display: grid;
+    grid-template-rows: 1fr 2fr minmax(max-content, 44px);
+    grid-template-columns: 1fr;
+    gap: 0 20px;
+    position: relative;
+    @media screen and (max-width: 700px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  .title-2 {
+    align-self: center;
+    color: $darkestgreen;
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  .separator {
+    grid-area: 1 / 1 / 2 / 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .price-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 700px) {
+      align-items: flex-start;
+      padding-left: 2ch;
+    }
+  }
+}
