@@ -4,6 +4,7 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :address %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   Want to make it available immediately?  <%= f.check_box :availability %>
   <p>(you can manage availability later in your profile page)</p>
   <p><%= f.submit "Create Co-Hemp", class: "btn btn-primary" %></p>
