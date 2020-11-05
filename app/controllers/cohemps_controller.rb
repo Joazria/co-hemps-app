@@ -55,8 +55,8 @@ class CohempsController < ApplicationController
     @cohemp = Cohemp.find(params[:id])
   end
 
-    # Only allow a trusted parameter "white list" through.
-    def cohemp_params
-      params.require(:cohemp).permit(:description, :address, :availability, :name, photos: [])
-    end
+  # Only allow a trusted parameter "white list" through.
+  def cohemp_params
+    params.require(:cohemp).permit(:description, :address, :availability, :name, photos: [])
+  end
 end
