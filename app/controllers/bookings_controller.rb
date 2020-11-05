@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
   end
 
  #def edit ---> na pagina do profile
- # end
+ # end 
 
   def update
     @booking.status = "canceled"

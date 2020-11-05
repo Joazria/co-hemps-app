@@ -1,0 +1,44 @@
+// IMPORTS
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto:wght@400;700&display=swap");
+
+// COLORS
+
+// Mono
+$black: #333333;
+$grey: #828282;
+$lightgrey: #c4c4c4;
+$white: #fafafa;
+
+// Brand
+$lightgreen: #6fcf97;
+$green: #27ae60;
+$darkgreen: #219653;
+$darkestgreen: #353d2f;
+
+// Assets
+$warning: #f2c94c;
+$danger: #eb5757;
+
+// Lists
+$color-list: ("green" $green, "warning" $warning, "danger" $danger);
+
+// FONTS
+$quicksand: "Quicksand", sans-serif;
+$roboto: "Roboto", sans-serif;
+
+$ft-normal: 400;
+$ft-bold: 700;
+
+$ft-size-title1: clamp(1.5rem, 2rem, 32px);
+$ft-size-title2: clamp(1rem, 1.2rem, 18px);;
+$ft-size-text1: 18px;
+$ft-size-text2: 1rem;
+
+// Border radius
+$small-radius: 4px;
+$medium-radius: 8px;
+$big-radius: 20px;
+
+//Shadows
+
+$medium-shadow: 0px 0px 12px -7px rgba(0, 0, 0, 0.2);

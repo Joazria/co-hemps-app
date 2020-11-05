@@ -1,1 +1,70 @@
 // Specific CSS for your home-page
+.home {
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-areas:
+    "banner banner banner"
+    "... highlights ..."
+    "... cohemps ..."
+    "... about ...";
+  grid-template-columns: 60px 1fr 60px;
+  @media screen and (max-width: 400px) {
+    grid-template-columns: 10px 1fr 10px;
+  }
+  .banner {
+    grid-area: banner;
+    height: 70vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap:15px 0;
+    background:linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.85)
+    ),
+    url("https://source.unsplash.com/1600x900/?coworking");
+    color: $white;
+    padding: 0 60px;
+    @media screen and (max-width: 412px) {
+      height: 100vh;
+      padding: 0 10px;
+    }
+    .title-1 {
+      max-width: 16ch;
+    }
+    .text-1 {
+      max-width: 35ch;
+      line-height: 1.5;
+      color: $lightgrey;
+    }
+  }
+  .highlights {
+    max-width: 100%;
+    display: grid;
+    grid-area: highlights;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content 1fr;
+    padding: 0 60px;
+    gap: 10px;
+    @media screen and (max-width: 1412px) {
+      grid-template-columns: 1fr;
+      padding: 0 10px;
+      & > * {
+        justify-self: center;
+      }
+    }
+    .title-1 {
+      color: $black;
+      grid-area: 1 / 1 / 2 / 3;
+      @media screen and (max-width: 1412px) {
+        grid-area: initial;
+        justify-self: start;
+      }
+    }
+  }
+  .cohemps {
+    grid-area: cohemps;
+  }
+}

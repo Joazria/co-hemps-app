@@ -1,0 +1,33 @@
+.btn {
+  min-height: 44px;
+  min-width: 120px;
+  max-width: 240px;
+  width: auto;
+  height: auto;
+  padding: 0.8rem 1.5rem;
+  border-radius: $small-radius;
+  cursor: pointer;
+  font: { 
+    family: $roboto;
+    size: $ft-size-text1;
+    weight: $ft-normal;
+  }
+
+  @each $name, $color in $color-list {
+    &-#{$name} {
+      background-color:$color;
+      color: $white;
+      transition:
+        box-shadow 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
+      &:hover,
+      &:active {
+        background-color: darken($color, 5%);
+      }
+      &:focus,
+      &:focus-within {
+        box-shadow: $medium-shadow;
+      }
+    }
+  }
+}
