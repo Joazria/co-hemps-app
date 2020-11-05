@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :cohemps
   has_many :bookings
+  validates :username, presence: true
 end
