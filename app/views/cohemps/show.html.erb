@@ -12,15 +12,18 @@
   <p>Book this Co-Hemp:</p>
   <%= simple_form_for [@cohemp, @booking] do |f| %>
     <%= f.input :date %>
-    <% @cohemp.photos.each do |photo| %>
-      <%= cl_image_path photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
     <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
   <% end %>
 <% end %>
 <% @cohemp.photos.each do |photo| %>
+<<<<<<< HEAD
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
+=======
+  <%= photo.key %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+>>>>>>> added two more sectons to home frontend
 <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"

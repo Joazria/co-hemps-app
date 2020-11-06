@@ -1,6 +1,6 @@
 <div class="card-horizontal mt-sm">
   <% if cohemp.photos.attached? %>
-    <%= cl_image_tag cohemp.photo.key , height: 300, width: 400, crop: :fill, class: "image" %>
+    <%= cl_image_tag cohemp.photos[0].key, height: 300, width: 400, crop: :fill, class: "image" %>
   <% else %>
     <img src="https://source.unsplash.com/285x220/?building" alt="" class="cloudinary">
   <% end %>
@@ -8,20 +8,20 @@
     <h2 class="title-2 mt-sm">
       <% if cohemp.name.nil? %>
         Cohemp em São Paulo
-      <% else  %>
+      <% else %>
         <%= cohemp.name %>
-      <% end  %>
+      <% end %>
     </h2>
     <span class="separator separator--small"></span>
     <ul class="feature-list mt-sm">
       <li class="list-item">Da boa</li>
       <li class="list-item">Acompanha cerveja artesanal</li>
     </ul>
-    <%= link_to cohemp_path(cohemp) do%>
+    <%= link_to cohemp_path(cohemp) do %>
       <%= render partial: "shared/button", locals: {
-        variant: "btn-green mt-sm",
-        title: "Reservar",
-      } %>
+                   variant: "btn-green mt-sm",
+                   title: "Reservar",
+                 } %>
     <% end %>
   </div>
 </div>
