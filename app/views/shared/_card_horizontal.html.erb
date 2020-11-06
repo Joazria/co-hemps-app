@@ -1,5 +1,9 @@
 <div class="card-horizontal mt-sm">
-  <img src="https://source.unsplash.com/285x220/?building" alt="" class="cloudinary">
+  <% if cohemp.photos.attached? %>
+    <%= cl_image_tag cohemp.photo.key , height: 300, width: 400, crop: :fill, class: "image" %>
+  <% else %>
+    <img src="https://source.unsplash.com/285x220/?building" alt="" class="cloudinary">
+  <% end %>
   <div class="card-horizontal__container">
     <h2 class="title-2 mt-sm">
       <% if cohemp.name.nil? %>

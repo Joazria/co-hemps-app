@@ -12,7 +12,9 @@
   <p>Book this Co-Hemp:</p>
   <%= simple_form_for [@cohemp, @booking] do |f| %>
     <%= f.input :date %>
-
+    <% @cohemp.photos.each do |photo| %>
+      <%= cl_image_path photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
     <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
   <% end %>
 <% end %>
