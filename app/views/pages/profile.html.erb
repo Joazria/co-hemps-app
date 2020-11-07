@@ -15,10 +15,10 @@
     <h2 class="title-1">Seu Co-hemp</h2>
     <ul class="cohemp__list">
         <% @cohemps.each do |cohemp| %>
-          <li class="list__item">
-            <h2>Cohemp</h2>
-            <%= link_to cohemp.description, cohemp_path(cohemp) %>
-          </li>
+           <%= render partial: "shared/card_vertical.html.erb", locals: {
+              cohemp: cohemp
+            } %>
+          <% end %>
         <% end %>
     </ul>
   </div>
@@ -36,7 +36,12 @@
       <% end %>
     <% end %>
     <% if @cohemps[0] == nil %>
-      <p><%= link_to "Adicionar um Cohemp", new_cohemp_path %></p>
+      <%= link_to "Adicionar um Cohemp", new_cohemp_path do %>
+        <%= render partial: "shared/button", locals: {
+                    variant: "btn-warning mt-sm",
+                    title: "+ Adicionar Co-hemp",
+                  } %>
+      <% end %>
     <% end %>
   </div>
 
