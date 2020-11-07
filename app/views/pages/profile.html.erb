@@ -1,7 +1,7 @@
 <h1>Profile Page</h1>
 
 <p>Hello <%= @user.email %>!</p>
-<p>Your Co-Hemps:</p>
+<p>Your Co-Hemp:</p>
 <ul class="list-group">
     <% @cohemps.each do |cohemp| %>
       <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -17,11 +17,14 @@
     <%= f.input :address %>
     <%= f.input :description %>
     Available? <%= f.check_box :availability %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit "Edit Cohemp", class: "btn btn-primary" %>
   <% end %>
 <% end %>
 
-<p><%= link_to "+ Add Co-Hemp", new_cohemp_path %></p>
+<% if @cohemps[0] == nil %>
+  <p><%= link_to "+ Add Co-Hemp", new_cohemp_path %></p>
+<% end %>
 
 <p>Your Bookings:</p>
 <ul class="list-group">
@@ -29,19 +32,19 @@
       <% if booking.status == 'solicited' || booking.status == 'approved'%>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <%= booking.date%> |
-          <%= booking.cohemp.description %> |
+          <%= booking.cohemp.name %> |
           <%= booking.status%>
           <%= link_to 'Cancel this booking', booking_cancel_path(booking.id), method: :patch %>
         </li>
       <% end %>
     <% end %>
-<p>Reservations to your Co-Hemps:</p>
+<p>Reservations to your Co-Hemp:</p>
 <ul class="list-group">
     <% @reservations.each do |reservation| %>
       <% if reservation.status == 'solicited' || reservation.status == 'approved'%>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <%= reservation.date%> |
-          <%= reservation.cohemp.description %> |
+          <%= reservation.user.email %> |
           <%= reservation.status%>
           <%= link_to 'Accept this booking', booking_approve_path(reservation.id), method: :patch %>
         </li>
