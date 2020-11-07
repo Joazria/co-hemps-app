@@ -1,53 +1,74 @@
-<h1>Profile Page</h1>
+<section class="profile">
+  <div class="profile__info mt-sm">
+    <h1 class="title-1 mt-sm mb-sm">Perfil</h1>
+    <%# Colocar image tag aqui %>
+    <img src="https://source.unsplash.com/285x220/?person" alt="" class="profile__img">
+    <div class="profile__details">
+      <h2 class="title-2 mt-sm">Nome</h2>
+      <p class="text-1">Nome do usuário<%# @user.name %></p>
+      <h2 class="title-2 mt-sm">E-mail</h2>
+      <p class="text-1"><%= @user.email %></p>
+    </div>
+  </div>
 
-<p>Hello <%= @user.email %>!</p>
-<p>Your Co-Hemp:</p>
-<ul class="list-group">
-    <% @cohemps.each do |cohemp| %>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <%= link_to cohemp.description, cohemp_path(cohemp) %>
-      </li>
-    <% end %>
-</ul>
+  <div class="profile__cohemp mt-sm">
+    <h2 class="title-1">Seu Co-hemp</h2>
+    <ul class="cohemp__list">
+        <% @cohemps.each do |cohemp| %>
+          <li class="list__item">
+            <h2>Cohemp</h2>
+            <%= link_to cohemp.description, cohemp_path(cohemp) %>
+          </li>
+        <% end %>
+    </ul>
+  </div>
 
-<h2>Edit Your Cohemp</h2>
-<% if @cohemps.ids[0] != nil %>
-  <%= simple_form_for(@cohemps[0]) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :description %>
-    Available? <%= f.check_box :availability %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit "Edit Cohemp", class: "btn btn-primary" %>
-  <% end %>
-<% end %>
-
-<% if @cohemps[0] == nil %>
-  <p><%= link_to "+ Add Co-Hemp", new_cohemp_path %></p>
-<% end %>
-
-<p>Your Bookings:</p>
-<ul class="list-group">
-    <% @bookings.each do |booking| %>
-      <% if booking.status == 'solicited' || booking.status == 'approved'%>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= booking.date%> |
-          <%= booking.cohemp.name %> |
-          <%= booking.status%>
-          <%= link_to 'Cancel this booking', booking_cancel_path(booking.id), method: :patch %>
-        </li>
+  <div class="profile__edit mt-sm">
+    <h2 class="title-1">Editar seu Co-hemp</h2>
+    <% if @cohemps.ids[0] != nil %>
+      <%= simple_form_for(@cohemps[0]) do |f| %>
+        <%= f.input :name, label: 'Nome' %>
+        <%= f.input :address, label: 'Endereço do Co-hemp' %>
+        <%= f.input :description, label: 'Descrição do Co-hemp' %>
+        Disponível? <%= f.check_box :availability %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true }, label: 'Adicione fotos do Co-hemp' %>
+        <%= f.submit "Editar Co-hemp", class: "btn btn-primary" %>
       <% end %>
     <% end %>
-<p>Reservations to your Co-Hemp:</p>
-<ul class="list-group">
-    <% @reservations.each do |reservation| %>
-      <% if reservation.status == 'solicited' || reservation.status == 'approved'%>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= reservation.date%> |
-          <%= reservation.user.email %> |
-          <%= reservation.status%>
-          <%= link_to 'Accept this booking', booking_approve_path(reservation.id), method: :patch %>
-        </li>
-      <% end %>
+    <% if @cohemps[0] == nil %>
+      <p><%= link_to "Adicionar um Cohemp", new_cohemp_path %></p>
     <% end %>
-</ul>
+  </div>
+
+  <div class="profile__bookings mt-sm">
+    <h2 class="title-1">Suas Reservas</h2>
+    <ul class="list-group">
+        <% @bookings.each do |booking| %>
+          <% if booking.status == 'solicited' || booking.status == 'approved'%>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= booking.date%> |
+              <%= booking.cohemp.name %> |
+              <%= booking.status%>
+              <%= link_to 'Cancel this booking', booking_cancel_path(booking.id), method: :patch %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+  </div>
+
+  <div class="profile__reservations mt-sm">
+    <h2 class="title-1">Reservas no seu Co-hemp</h2>
+    <ul class="list-group">
+        <% @reservations.each do |reservation| %>
+          <% if reservation.status == 'solicited' || reservation.status == 'approved'%>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= reservation.date%> |
+              <%= reservation.user.email %> |
+              <%= reservation.status%>
+              <%= link_to 'Accept this booking', booking_approve_path(reservation.id), method: :patch %>
+            </li>
+          <% end %>
+        <% end %>
+    </ul>
+  </div>
+</section>

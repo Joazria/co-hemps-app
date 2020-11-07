@@ -8,8 +8,10 @@
 @import "partials/card_horizontal";
 @import "partials/card_vertical";
 @import "partials/footer";
+@import "pages/profile";
 
 // External libraries
+
 // @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -21,12 +23,8 @@
 @import "pages/index";
 
 body {
-  display: grid;
-  grid-template-rows: 60px 1fr 60px;
-  main {
-    grid-area: 2 / 1 / 3 / 2;
-  }
-  footer {
-    grid-area: 3 / 1 / 4 / 2;
-  }
+  position: relative;
+  min-height: 100vh;
+  height: fit-content;
+  height: auto;
 }
