@@ -1,47 +1,49 @@
-<h1>Pages#home</h1>
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.coworker.com/mag/wp-content/uploads/2017/10/theworkprojectatmidtownsoundwillplazaiihongkong.jpg);">
-  <div class="container">
-    <h1>Le Co-hemps  for <strong>creative people</strong>!</h1>
-    <p>Change your lifestyle and learn to smoke and create at one of our cohemps around the world.</p>
-    <a class="btn btn-flat" href="/users/sign_up" >register now</a>
+<main class="home">
+  <div class="banner">
+      <h1 class="title-1">Why Co-work when you can Co-hemp?</h1>
+      <p class="text-1">Una o melhor dos dois mundos, trabalhe, relaxe e expanda sua mente no mesmo lugar!</p>
+      <%= render partial: "shared/button", locals: {
+                 variant: "btn-green mt-sm",
+                 title: "Conhecer Co-hemps",
+               } %>
+    </div>
   </div>
-</div>
-
-<ul class="list-group">
-    <% @cohemps.each do |cohemp| %>
-      <% if cohemp.availability %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= link_to cohemp.name, cohemp_path(cohemp) %>
-        </li>
-      <% end %>
-    <% end %>
-</ul>
-
-<div class="row">
-        <% @cohemps.each do |cohemp| %>
-          <% if cohemp.availability %>
-            <div class="card col-4">
-                <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/03/fumar-maconha.jpg')">
-                  <h5 class="card-title"> <%= cohemp.name %> </h5>
-
-                </div>
-
-
-                <div class="card-body">
-                   <%= link_to 'more infos', cohemp_path(cohemp), class: "btn btn-success" %>
-              </div>
-
-            </div>
+  <div class="highlights mt-md">
+    <h2 class="title-1">Destaques</h2>
+    <%= render partial: "shared/card_horizontal.html.erb", locals: {
+      cohemp: @cohemps.find(1)
+    }%>
+    <%= render partial: "shared/card_horizontal.html.erb", locals: {
+      cohemp: @cohemps.find(2)
+    } %>
+  </div>
+  <div class="cohemps mt-lg">
+    <h2 class="title-1">Co-hemps</h2>
+    <div class="cohemp-container">
+      <% @cohemps.first(4).each do |cohemp| %>
+        <%= link_to cohemp_path(cohemp) do %>
+          <%= render partial: "shared/card_vertical.html.erb", locals: {
+              cohemp: cohemp
+            } %>
           <% end %>
-        <% end %>
-</div>
+      <% end %>
+    </div>
+    <div id="map" class="cohemp__map"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>">
+    </div>
+  </div>
+  <div class="about mt-md">
+    <img src="https://source.unsplash.com/285x220/?corporate" alt="" class="about__img">
+    <div class="about__container">
+      <h2 class="title-1 mt-sm">Sobre nós</h2>
+      <p class="text-1 mt-sm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere dolores cumque atque rerum consequatur eveniet est, dolor iste in odio quasi perferendis, repellendus voluptatum omnis quisquam delectus porro quia hic?</p>
+      <%= render partial: "shared/button", locals: {
+                 variant: "btn-green mt-md",
+                 title: "Ver reservas",
+               } %>
+    </div>
+  </div>
+</main>
 
-
-
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
 

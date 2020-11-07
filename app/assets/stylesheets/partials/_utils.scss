@@ -1,0 +1,113 @@
+// Spacers
+
+$sizes: "sm", "md", "lg", "xl";
+$size-map:("sm" : 1);
+$i: 1;
+$base-val: 10;
+
+@each $key in $sizes{
+  $size-map: map-merge(
+    $size-map,
+    (
+      quote($key) :
+      unquote( calc( (#{$base-val} * (#{$i} * 1.618px) ) ) )
+    )
+  );
+  $i: $i + 1;
+}
+
+$position:(
+  "b" : "bottom",
+  "t" : "top",
+  "l" : "left",
+  "r" : "right"
+);
+
+.m{
+  @each $pos, $local in $position{
+    &#{$pos}{
+      @each $size, $pixel in $size-map{
+        &-#{$size}{
+          margin-#{$local}: $pixel;
+        }  
+      }
+    }
+  }
+}
+ 
+.p{
+  @each $pos, $local in $position{
+    &#{$pos}{
+      @each $size, $pixel in $size-map{
+        &-#{$size}{
+          padding-#{$local}: $pixel;
+        }
+      }
+    }
+  }
+}
+
+// Fonts
+.title-1 {
+  font: {
+    size: $ft-size-title1;
+    family: $quicksand;
+    weight: $ft-bold;
+  }
+}
+
+.title-2 {
+  font: {
+    size: $ft-size-title2;
+    family: $quicksand;
+    weight: $ft-bold;
+  }
+}
+
+.text-1 {
+  font: {
+    size: $ft-size-text1;
+    family: $roboto;
+    weight: $ft-normal;
+  }
+}
+
+// Separator
+.separator {
+   height: 2px;
+   width: 100%;
+   border-radius: $small-radius;
+   background: $lightgrey;
+   &--small{
+    width: 40px;
+   }
+}
+
+// Feature list
+.feature-list {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px 0;
+  .list-item {
+    color: $black;
+    min-width: 25ch;
+    font: {
+      size: $ft-size-text1;
+      family: $roboto;
+      weight: $ft-normal;
+    }
+    padding-left: 2ch;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      background-color: $lightgrey;
+    }
+  }
+}

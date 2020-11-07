@@ -1,16 +1,30 @@
-// Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
+// Co-hemp variables
+@import "partials/_variables";
+@import "partials/_reset";
+@import "partials/_utils";
+
+// Co-hemps partials
+@import "partials/_button";
+@import "partials/card_horizontal";
+@import "partials/card_vertical";
+@import "partials/footer";
+@import "pages/profile";
 
 // External libraries
-@import "bootstrap/scss/bootstrap";
+
+// @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import 'mapbox-gl/dist/mapbox-gl';
-@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
+@import "mapbox-gl/dist/mapbox-gl";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 
-// Your CSS partials
+// Le Wagon's partials
 @import "components/index";
 @import "pages/index";
 
+body {
+  position: relative;
+  min-height: 100vh;
+  height: fit-content;
+  height: auto;
+}

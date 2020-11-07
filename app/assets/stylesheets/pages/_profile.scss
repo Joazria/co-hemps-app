@@ -1,0 +1,42 @@
+.profile {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "profile cohemp"
+    "booking edit"
+    "reservation edit";
+  margin-top: 60px;
+  padding: 0 60px;
+  color: $black;
+  @media screen and (max-width: 980px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "profile"
+    "cohemp"
+    "edit"
+    "booking"
+    "reservation";
+  }
+  &__info {
+    grid-area: profile;
+  }
+  &__details {
+    flex-direction: column;
+    width: fit-content;
+    text-align: center;
+  }
+  &__cohemp {
+    grid-area: cohemp;
+  }
+  &__edit {
+    grid-area: edit;
+  }
+  &__bookings {
+    grid-area: booking;
+  }
+  &__reservations {
+    grid-area: reservation;
+  }
+}

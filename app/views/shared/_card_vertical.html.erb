@@ -1,0 +1,11 @@
+<div class="card-vertical mb-sm">
+  <% if cohemp.photos.attached? %>
+    <%= cl_image_tag cohemp.photos[0].key , height: 300, width: 400, crop: :fill, class: "card__image" %>
+  <% else %>
+    <img src="https://source.unsplash.com/285x220/?building" alt="" class="card__image">
+  <% end %>
+  <div class="card__info">
+    <h2 class="card__locale"><%= cohemp.address %></h2>
+    <p class="card__desc"><%= cohemp.description %></p>
+  </div> 
+</div>
