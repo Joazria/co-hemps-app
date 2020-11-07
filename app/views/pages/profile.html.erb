@@ -12,13 +12,12 @@
   </div>
 
   <div class="profile__cohemp mt-sm">
-    <h2 class="title-1">Seu Co-hemp</h2>
+    <h2 class="title-1 mt-sm mb-sm">Seu Co-hemp</h2>
     <ul class="cohemp__list">
         <% @cohemps.each do |cohemp| %>
-          <li class="list__item">
-            <h2>Cohemp</h2>
-            <%= link_to cohemp.description, cohemp_path(cohemp) %>
-          </li>
+           <%= render partial: "shared/card_vertical.html.erb", locals: {
+              cohemp: cohemp
+            } %>
         <% end %>
     </ul>
   </div>
@@ -30,13 +29,21 @@
         <%= f.input :name, label: 'Nome' %>
         <%= f.input :address, label: 'Endereço do Co-hemp' %>
         <%= f.input :description, label: 'Descrição do Co-hemp' %>
-        Disponível? <%= f.check_box :availability %>
+        <%= f.label :is_positive do %>
+          <%= f.check_box :availability%>
+          <label for="availability">Disponivel?</label>
+        <% end %>
         <%= f.input :photos, as: :file, input_html: { multiple: true }, label: 'Adicione fotos do Co-hemp' %>
         <%= f.submit "Editar Co-hemp", class: "btn btn-primary" %>
       <% end %>
     <% end %>
     <% if @cohemps[0] == nil %>
-      <p><%= link_to "Adicionar um Cohemp", new_cohemp_path %></p>
+      <%= link_to "Adicionar um Cohemp", new_cohemp_path do %>
+        <%= render partial: "shared/button", locals: {
+                    variant: "btn-warning mt-sm",
+                    title: "+ Adicionar Co-hemp",
+                  } %>
+      <% end %>
     <% end %>
   </div>
 
@@ -45,11 +52,11 @@
     <ul class="list-group">
         <% @bookings.each do |booking| %>
           <% if booking.status == 'solicited' || booking.status == 'approved'%>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <%= booking.date%> |
-              <%= booking.cohemp.name %> |
-              <%= booking.status%>
-              <%= link_to 'Cancel this booking', booking_cancel_path(booking.id), method: :patch %>
+            <li class="list-item">
+              <span class="list-item__def"><%= booking.date%></span>
+              <span class="list-item__def"><%= booking.cohemp.name %></span>
+              <span class="list-item__def"><%= booking.status%></span>
+              <span class="list-item__def"><%= link_to 'Cancelar Reserva', booking_cancel_path(booking.id), method: :patch, class: 'danger' %></span>
             </li>
           <% end %>
         <% end %>
@@ -61,11 +68,11 @@
     <ul class="list-group">
         <% @reservations.each do |reservation| %>
           <% if reservation.status == 'solicited' || reservation.status == 'approved'%>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <%= reservation.date%> |
-              <%= reservation.user.email %> |
-              <%= reservation.status%>
-              <%= link_to 'Accept this booking', booking_approve_path(reservation.id), method: :patch %>
+            <li class="list-item">
+            <span class="list-item__def"><%= reservation.date%></span>
+            <span class="list-item__def"><%= reservation.user.username %></span>
+            <span class="list-item__def"><%= reservation.status%></span>
+            <span class="list-item__def"><%= link_to 'Accept this booking', booking_approve_path(reservation.id), method: :patch, class: 'success' %></span>
             </li>
           <% end %>
         <% end %>

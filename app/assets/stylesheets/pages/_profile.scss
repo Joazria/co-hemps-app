@@ -8,7 +8,7 @@
     "booking edit"
     "reservation edit";
   margin-top: 60px;
-  padding: 0 60px;
+  padding: 60px 60px 80px;
   color: $black;
   @media screen and (max-width: 980px) {
     grid-template-columns: 1fr;
@@ -22,6 +22,13 @@
   &__info {
     grid-area: profile;
   }
+  &__img {
+    border-radius: 50% 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-left: 30px;
+  }
   &__details {
     flex-direction: column;
     width: fit-content;
@@ -32,11 +39,42 @@
   }
   &__edit {
     grid-area: edit;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
   }
-  &__bookings {
+  &__bookings{
     grid-area: booking;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px 0;
+    width: clamp(320px, 80%, 650px);
+    .list-group {
+      display: inherit;
+      flex-flow: column nowrap;
+      gap: 20px 0;
+    }
+    .list-item {
+      background: rgb(245,245,245);
+      border-radius: $small-radius;
+      color: $black;
+      display: flex;
+      justify-content:space-evenly;
+      padding: 0.8rem 1.5rem;
+      font: {
+        size: $ft-size-text1;
+        weight: $ft-normal;
+        family: $roboto;
+      }
+      a{
+        color: $black;
+        &.danger { color: $danger; }
+        &.success { color: $green; }
+      }
+    }
   }
   &__reservations {
     grid-area: reservation;
+    @extend .profile__bookings;
   }
 }
