@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :cohemps
   has_many :bookings
   has_one_attached :image
+  validates :username, presence: true
 end
