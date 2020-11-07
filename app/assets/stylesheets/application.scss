@@ -23,8 +23,16 @@
 @import "pages/index";
 
 body {
+<<<<<<< HEAD
   position: relative;
   min-height: 100vh;
   height: fit-content;
   height: auto;
+=======
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  main {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+>>>>>>> c55fb7b1ae75c37dd23baa549305bed9241d27d3
 }
