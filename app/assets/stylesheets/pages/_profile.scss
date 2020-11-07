@@ -22,6 +22,10 @@
   &__info {
     grid-area: profile;
   }
+  &__img {
+    border-radius: 50% 50%;
+    object-fit: cover;
+  }
   &__details {
     flex-direction: column;
     width: fit-content;
@@ -32,6 +36,9 @@
   }
   &__edit {
     grid-area: edit;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
   }
   &__bookings {
     grid-area: booking;

@@ -1,0 +1,35 @@
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
+}
+
+input{
+  &[type=text], &[type=password] {
+    border: 1px solid $grey;
+    border-radius: $small-radius;
+    color: $lightgrey;
+    max-height: 44px;
+    width: clamp(180px, 80%, 280px);
+    padding: 0.8rem 1.2rem;
+  }
+  &[type=submit]{
+    @extend .btn;
+    @extend .btn-green;
+  }
+  &:disabled {
+    background: $lightgrey;
+    cursor: default;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+label {
+  color: $grey;
+  font: {
+    size: $ft-size-text2;
+    weight: $ft-normal;
+    family: $roboto;
+  }
+}
