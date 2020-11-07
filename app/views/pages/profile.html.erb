@@ -44,7 +44,7 @@
       <% end %>
     <% end %>
     <% if @cohemps[0] == nil %>
-      <%= link_to "Adicionar um Cohemp", new_cohemp_path do %>
+      <%= link_to new_cohemp_path do %>
         <%= render partial: "shared/button", locals: {
                     variant: "btn-warning mt-sm",
                     title: "+ Adicionar Co-hemp",
