@@ -1,0 +1,26 @@
+.footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 15px 60px;
+  height: 100%;
+  width: 100%;
+
+  background: $green;
+  color: $white;
+  &__right {
+    align-self: flex-end;
+    font: {
+      size: $ft-size-text2;
+      weight: normal;
+      family: $roboto;
+    }
+  }
+  &__social {
+    display: inherit;
+    align-items: center;
+    gap: 0 15px;
+    font-size: 1rem;
+  }
+}

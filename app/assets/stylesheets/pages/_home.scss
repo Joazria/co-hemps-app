@@ -121,6 +121,29 @@
     }
   }
   .about {
+    display: grid;
     grid-area: about;
+    grid-template-columns: repeat(auto-fit ,minmax(50%, 600px));
+    gap: 0 20px;
+    position: relative;
+    &__img {
+      height: 330px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 0 20px 20px 0;
+      position: relative;
+      left: -60px;
+      @media screen and (max-width: 870px) {
+        width: calc(100% + 60px);
+      }
+    }
+    &__container {
+      width: 100%;
+      color: $black;
+      .text-1 {
+        color: $grey;
+        line-height: 1.5;
+      }
+    }
   }
 }
