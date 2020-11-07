@@ -1,8 +1,14 @@
 <section class="profile">
   <div class="profile__info mt-sm">
     <h1 class="title-1 mt-sm mb-sm">Perfil</h1>
-    <%# Colocar image tag aqui %>
-    <%= cl_image_tag current_user.image.key, :gravity=>"faces", :crop=>"fill", :default_image => "cohemp-green.svg", :class =>"profile__img" %>
+
+     <% if current_user.image.attached? %>
+        <%= cl_image_tag current_user.image.key, :gravity=>"faces", :crop=>"fill", :default_image => "cohemp-green.svg", :class =>"profile__img" %>
+    <% else %>
+      <img src="https://source.unsplash.com/285x220/?building" alt="" class="profile__img">
+    <% end %>
+
+
     <div class="profile__details">
       <h2 class="title-2 mt-sm">Nome</h2>
       <p class="text-1">Nome do usuário<%# @user.name %></p>
