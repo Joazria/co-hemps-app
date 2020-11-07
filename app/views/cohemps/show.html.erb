@@ -1,27 +1,43 @@
-<h1><%= @cohemp.name %></h1>
-
-<p><%= @cohemp.description %></p>
-<p>Address: <%= @cohemp.address %></p>
-<% if @cohemp.availability %>
- <p>Available</p>
-<% else %>
- <p>Not Available</p>
-<% end %>
-<p>Owner: <%= @cohemp.user.email %></p>
-<% if @cohemp.id != current_user.id %>
-  <p>Book this Co-Hemp:</p>
-  <%= simple_form_for [@cohemp, @booking] do |f| %>
-    <%= f.input :date %>
-    <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
+<section class="show">
+  <% if @cohemp.photos.attached? %>
+    <% @cohemp.photos.each do |photo| %>
+      <%= photo.key %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "show-image" %>
+    <% end %>
+  <% else %>
+    <img src="https://source.unsplash.com/285x220/?building" alt="" class="show-image">
   <% end %>
-<% end %>
-<% @cohemp.photos.each do |photo| %>
-  <%= photo.key %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+  <div class="show-container">
+    <h1 class="title-1 mb-sm">Informações do Cohemp</h1>
+    <h2 class="title-2 mt-sm">Nome</h2>
+    <h2 class="title-1"><%= @cohemp.name %></h2>
+    <h2 class="title-2 mt-sm">Descrição</h2>
+    <p class="text-1"><%= @cohemp.description %></p>
+    <h2 class="title-2 mt-sm">Endereço</h2>
+    <p class="text-1"><%= @cohemp.address %></p>
+    <% if @cohemp.availability %>
+      <p class="success text-1">Disponivel</p>
+    <% else %>
+      <p class="danger text-1">Não disponível</p>
+    <% end %>
+  </div>
+  <div class="show-info mt-sm">
+    <h1 class="title-1 mb-sm">Informações do Host</h1>
+    <h2 class="title-2 mt-sm">Email do Host </h2>
+    <p class="text-1"><%= @cohemp.user.email %></p>
+    <% if @cohemp.id != current_user.id %>
+      <h2 class="title-2 mt-sm">Reservar esse Co-hemp</h2>
+      <%= simple_form_for [@cohemp, @booking] do |f| %>
+        <%= f.input :date, label: "Data" %>
+        <p><%= f.submit "Book Co-Hemp", class: "btn btn-primary" %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="map"
+      class="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>">
+  </div>
+
+</section>
 

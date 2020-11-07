@@ -10,12 +10,14 @@ input{
     border-radius: $small-radius;
     color: $lightgrey;
     max-height: 44px;
-    width: clamp(180px, 80%, 280px);
-    padding: 0.8rem 1.2rem;
+    width: clamp(180px, 80%, 320px);
+    padding: 0.6rem 1.2rem;
   }
   &[type=submit]{
     @extend .btn;
     @extend .btn-green;
+    border: none;
+
   }
   &:disabled {
     background: $lightgrey;
@@ -32,4 +34,22 @@ label {
     weight: $ft-normal;
     family: $roboto;
   }
+  [for=availability] {
+    color: $black;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-flow: column;
+  gap: 15px 0;
+  margin-bottom: 15px;
+}
+
+textarea {
+  border: 1px solid $grey;
+  border-radius: $small-radius;
+  padding: 5px;
+  color: $black;
+  width: clamp(180px, 80%, 320px);
 }
